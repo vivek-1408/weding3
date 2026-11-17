@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul & Priya — Royal Elephant Baraat & Gold Scratch 3D Wedding Invitation</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Three.js for Real-Time 3D Golden Temple Dust & Sacred Rings -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy-deep: #09132E;
+      --navy-royal: #0F2354;
+      --navy-card: #0D1B3E;
+      --cream-ivory: #FAF3E6;
+      --cream-warm: #F3E6D0;
+      --gold-primary: #D4AF37;
+      --gold-light: #F3D98B;
+      --gold-dark: #9E7B22;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--cream-ivory);
+      color: var(--navy-deep);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+    .font-hindi { font-family: 'Rozha One', serif; }
+
+    /* Mobile-First HD App Container & 3D Perspective Stage */
+    .perspective-stage {
+      perspective: 1400px;
+      transform-style: preserve-3d;
+    }
+
+    .tilt-card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+      will-change: transform;
+    }
+
+    .tilt-layer-front {
+      transform: translateZ(28px);
+    }
+
+    .tilt-layer-mid {
+      transform: translateZ(16px);
+    }
+
+    /* Royal Midnight Navy Gradient matching Image 1 */
+    .royal-navy-hero-bg {
+      background: radial-gradient(circle at 50% 25%, #18377E 0%, #0D1E4A 52%, #070F26 100%);
+    }
+
+    /* 3D Rotating Golden Mandala Halo behind Shree Ganesh Ji */
+    @keyframes spinMandala3D {
+      0% { transform: rotateX(55deg) rotateZ(0deg); }
+      100% { transform: rotateX(55deg) rotateZ(360deg); }
+    }
+
+    @keyframes spinAuraHalo {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.04); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    .elephant-halo-ring {
+      animation: spinMandala3D 22s linear infinite;
+    }
+
+    .ganesh-aura-spin {
+      animation: spinAuraHalo 28s linear infinite;
+    }
+
+    /* Antique Metallic Gold Text */
+    .gold-foil-text {
+      background: linear-gradient(135deg, #E5C158 0%, #FFF0B8 45%, #C59B27 80%, #F3D98B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Gold Hairline Border Card (Matching Image 2, 3, 4) */
+    .royal-gold-border {
+      border: 1.5px solid rgba(212, 175, 55, 0.65);
+      box-shadow: 0 22px 50px rgba(6, 13, 33, 0.38);
+    }
+
+    .event-card-navy {
+      background: linear-gradient(180deg, rgba(16, 33, 76, 0.92) 0%, rgba(10, 21, 51, 0.98) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.45s ease;
+    }
+
+    .event-card-navy:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(243, 217, 139, 0.95);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 24px rgba(212, 175, 55, 0.22);
+    }
+
+    /* 3D Floating Icon Animation */
+    .icon-float-3d {
+      filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.45));
+      animation: float3D 4s ease-in-out infinite;
+    }
+
+    @keyframes float3D {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* 3D Divine Floating & Breathing Aura for Shree Ganesh Ji in Hero */
+    @keyframes ganeshDivineFloat3D {
+      0%, 100% { transform: translateY(0px) rotateY(-4deg) scale(1); }
+      50% { transform: translateY(-12px) rotateY(4deg) scale(1.025); }
+    }
+
+    .ganesh-hero-float {
+      animation: ganeshDivineFloat3D 4.6s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+
+    .ganesh-hd-glow {
+      filter: drop-shadow(0 28px 36px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 28px rgba(243, 217, 139, 0.45));
+    }
+
+    /* Scratch Card Canvas */
+    #scratchCanvas {
+      touch-action: none;
+      cursor: crosshair;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .scratch-cleared {
+      opacity: 0 !important;
+      transform: scale(1.06);
+      pointer-events: none;
+    }
+
+    @keyframes revealPop {
+      0% { transform: scale(0.82); opacity: 0.2; }
+      70% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .date-revealed-pop {
+      animation: revealPop 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Scroll Fade-Up */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #FAF3E6; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #0D1E4A, #D4AF37);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#D4AF37] selection:text-[#09132E]">
+
+  <!-- Floating Marigold & Golden Stardust Canvas -->
+  <canvas id="celebrationCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+  <!-- Real-Time Three.js 3D Ambient Gold Dust & Sacred Ring Layer -->
+  <div id="threeSceneContainer" class="fixed inset-0 pointer-events-none z-10 opacity-75"></div>
+
+  <!-- Minimal Floating Top Controls (Audio + Elephant PNG + Customize) -->
+  <div class="fixed top-3 right-3 z-40 flex items-center gap-1.5 sm:gap-2">
+    <button
+      id="musicToggleBtn"
+      onclick="toggleRoyalMusic()"
+      aria-label="Toggle Royal Wedding Music"
+      class="px-3 py-2 rounded-full bg-[#09132E]/85 backdrop-blur-md border border-[#D4AF37]/60 text-[#F3D98B] text-xs font-semibold flex items-center gap-1.5 shadow-lg hover:bg-[#132659] transition"
+    >
+      <span id="musicIcon">🔇</span>
+      <span id="musicLabel" class="hidden sm:inline">Shehnai</span>
+    </button>
+
+    <label
+      title="Upload or swap Shree Ganesh Ji 3D PNG"
+      class="cursor-pointer px-3 py-2 rounded-full bg-[#09132E]/85 backdrop-blur-md border border-[#D4AF37]/60 text-[#F3D98B] text-xs font-semibold flex items-center gap-1 shadow-lg hover:bg-[#132659] transition"
+    >
+      <span>🕉️</span>
+      <span class="hidden sm:inline">Ganesh PNG</span>
+      <input type="file" accept="image/*" class="hidden" onchange="handleCustomGaneshUpload(event)" />
+    </label>
+
+    <button
+      onclick="openCustomizeModal()"
+      class="px-3.5 py-2 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F3D98B] text-[#09132E] text-xs font-bold shadow-lg hover:brightness-105 transition"
+    >
+      ✎ Edit
+    </button>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. SCROLL-DRIVEN 3D SHREE GANESH JI DIVINE BLESSING HERO              -->
+  <!-- ===================================================================== -->
+  <section id="elephantScrollTrack" class="relative h-[215vh] royal-navy-hero-bg perspective-stage">
+    <div class="sticky top-0 h-screen w-full overflow-hidden mandala-ring-bg flex flex-col justify-between">
+
+      <!-- Subtle Golden Sparkle Dots -->
+      <div class="absolute inset-0 pointer-events-none opacity-45" style="background-image: radial-gradient(#F3D98B 1px, transparent 1px); background-size: 44px 44px;"></div>
+
+      <!-- Top Couple Names Display (Mobile-Optimized HD Typography) -->
+      <div id="heroNamesHeader" class="relative z-20 pt-14 sm:pt-16 text-center px-4 transition-all duration-300">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#09132E]/60 border border-[#D4AF37]/40 backdrop-blur-md mb-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#F3D98B] animate-ping"></span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#F3D98B] font-cinzel">
+            ॥ श्री गणेशाय नमः ॥ • 3D Invitation
+          </span>
+        </div>
+
+        <h1 id="heroGroomName" class="font-cormorant text-5xl sm:text-6xl font-bold text-white tracking-wide drop-shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
+          Rahul
+        </h1>
+        <p class="font-cormorant text-2xl sm:text-3xl gold-foil-text my-0.5 font-bold">&amp;</p>
+        <h1 id="heroBrideName" class="font-cormorant text-5xl sm:text-6xl font-bold text-white tracking-wide drop-shadow-[0_6px_18px_rgba(0,0,0,0.6)]">
+          Priya
+        </h1>
+      </div>
+
+      <!-- Scroll-Driven 3D Sculpted Shree Ganesh Ji Centerpiece -->
+      <div
+        id="royalElephantMover"
+        class="relative z-20 w-full flex flex-col justify-center items-center pb-4 sm:pb-6 pointer-events-none will-change-transform"
+        style="transform: translate3d(0, 0, 0) scale(1);"
+      >
+        <!-- 3D Perspective Golden Floor Lotus Pedestal Halo under Shree Ganesh Ji -->
+        <div class="absolute bottom-2 w-[290px] h-[290px] sm:w-[390px] sm:h-[390px] rounded-full border-2 border-dashed border-[#D4AF37]/50 elephant-halo-ring pointer-events-none"></div>
+
+        <!-- Radial Golden Divine Aura Behind Shree Ganesh Ji -->
+        <div class="absolute w-[270px] h-[270px] sm:w-[360px] sm:h-[360px] rounded-full bg-gradient-to-tr from-[#D4AF37]/25 via-[#F3D98B]/15 to-transparent blur-2xl pointer-events-none"></div>
+
+        <div class="ganesh-hero-float relative w-[260px] sm:w-[330px] md:w-[360px] max-w-[78vw] flex flex-col items-center justify-center">
+          <!-- High-Resolution Royal Shree Ganesh Ji Image (Swappable via Top Button) -->
+          <img
+            id="royalGaneshCustomImg"
+            src="https://images.unsplash.com/photo-1567591414240-e9c1e59f3e06?auto=format&fit=crop&w=900&q=90"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x600/0A1638/F3D98B?text=%E0%A5%90+%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80+%E0%A4%97%E0%A4%A3%E0%A5%87%E0%A4%B6%E0%A4%BE%E0%A4%AF+%E0%A4%A8%E0%A4%AE%E0%A4%83';"
+            alt="Shree Ganesh Ji"
+            class="w-full aspect-square object-cover rounded-full border-4 border-[#D4AF37]/85 ganesh-hd-glow select-none shadow-[0_0_50px_rgba(212,175,55,0.45)]"
+          />
+
+          <!-- Sacred Shree Ganesh Shloka -->
+          <p class="font-hindi text-center text-base sm:text-lg text-[#F3D98B] leading-relaxed mt-4 px-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br />
+            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Scroll Cue -->
+      <div id="scrollCueBadge" class="relative z-20 pb-5 text-center transition-opacity duration-300">
+        <div class="inline-flex flex-col items-center gap-1 text-[#F3D98B]/95">
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-cinzel">Scroll Down for Invitation &amp; Date</span>
+          <span class="animate-bounce text-lg">↓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 2. SHREE GANESHAY NAMAH CARD + GOLD FOIL SCRATCH DATE (3D TILT CARD)  -->
+  <!-- ===================================================================== -->
+  <section class="relative z-20 bg-[#FAF3E6] py-12 sm:py-16 px-4 sm:px-6 perspective-stage">
+    <div class="max-w-md sm:max-w-lg mx-auto reveal-section">
+      <!-- Outer Warm Cream Frame with Inner Deep Navy & 3D Interactive Tilt Card -->
+      <div class="tilt-card-3d rounded-[1.85rem] bg-[#0A1638] royal-gold-border p-6 sm:p-10 text-center text-white relative overflow-hidden">
+
+        <!-- Subtle Corner Flourishes -->
+        <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37]/60"></div>
+        <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#D4AF37]/60"></div>
+        <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#D4AF37]/60"></div>
+        <div class="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37]/60"></div>
+
+        <!-- Shree Ganesh Ji Photo Medallion -->
+        <div class="mx-auto w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
+          <img
+            id="cardGaneshPhoto"
+            src="https://images.unsplash.com/photo-1567591414240-e9c1e59f3e06?auto=format&fit=crop&w=500&q=85"
+            onerror="this.onerror=null;this.src='https://placehold.co/300x300/0A1638/F3D98B?text=%E0%A5%90';"
+            alt="Shree Ganesh Ji"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Sanskrit Invocation & Ganesh Shloka -->
+        <p class="font-hindi text-xl sm:text-2xl text-[#F3D98B] tracking-wide mt-3">
+          ॥ श्री गणेशाय नमः ॥
+        </p>
+        <p class="font-hindi text-xs sm:text-sm text-[#F3E6D0]/90 leading-relaxed mt-1.5">
+          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
+        </p>
+
+        <!-- WEDDING DATE SCRATCH SECTION (Prompt Request + Image 2 Position) -->
+        <div class="mt-5 mb-6">
+          <p class="font-cinzel text-[11px] uppercase tracking-[0.32em] text-[#D4AF37] mb-2.5">
+            Wedding Date • Scratch Gold Foil
+          </p>
+
+          <div
+            id="scratchBoxWrapper"
+            class="relative mx-auto w-full max-w-[300px] h-24 rounded-2xl border-2 border-[#D4AF37] bg-gradient-to-br from-[#FAF3E6] via-[#F7E8C8] to-[#EBD39C] flex flex-col items-center justify-center overflow-hidden shadow-inner select-none"
+          >
+            <!-- Revealed Date Underneath -->
+            <div id="revealedDateBox" class="px-3 text-center">
+              <p id="cardWeddingDate" class="font-cinzel text-lg sm:text-xl font-extrabold text-[#09132E] tracking-wide">
+                27th September 2026
+              </p>
+              <p id="cardWeddingVenue" class="font-cormorant text-sm font-bold text-[#8C6414] mt-0.5">
+                The Leela Palace, Udaipur
+              </p>
+            </div>
+
+            <!-- Metallic Gold Scratch Canvas -->
+            <canvas id="scratchCanvas" class="absolute inset-0 w-full h-full z-20"></canvas>
+          </div>
+
+          <div class="mt-2 flex items-center justify-center gap-3 text-[11px] text-[#F3D98B]/80">
+            <span id="scratchStatusText">Rub gold card to reveal date</span>
+            <button type="button" onclick="resetScratchCard()" class="underline hover:text-white">Reset</button>
+          </div>
+        </div>
+
+        <!-- Groom & Parents (Matching Image 2 Typography) -->
+        <div class="space-y-1.5 mt-4">
+          <h2 id="cardGroomName" class="font-cinzel text-2xl sm:text-3xl font-bold tracking-[0.14em] text-white uppercase">
+            RAHUL
+          </h2>
+          <p id="cardGroomParents" class="font-cinzel text-xs sm:text-sm tracking-[0.12em] text-[#F3E6D0]/90 uppercase leading-relaxed">
+            MR. KIRAN &amp; MRS.<br />SUNAINA AGGARWAL
+          </p>
+        </div>
+
+        <!-- Ampersand -->
+        <p class="font-cormorant text-2xl sm:text-3xl text-[#E5C158] font-bold my-4">&amp;</p>
+
+        <!-- Bride & Parents (Matching Image 2 Typography) -->
+        <div class="space-y-1.5">
+          <h2 id="cardBrideName" class="font-cinzel text-2xl sm:text-3xl font-bold tracking-[0.14em] text-white uppercase">
+            PRIYA
+          </h2>
+          <p id="cardBrideParents" class="font-cinzel text-xs sm:text-sm tracking-[0.12em] text-[#F3E6D0]/90 uppercase leading-relaxed">
+            MR. OM &amp; MRS. LATA BEDI
+          </p>
+        </div>
+
+        <!-- Bottom Auspicious Line -->
+        <div class="mt-8 pt-5 border-t border-[#D4AF37]/30">
+          <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.22em] text-[#F3D98B] uppercase leading-relaxed">
+            ON THE FOLLOWING<br />AUSPICIOUS OCCASIONS
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 3. "UNTIL OUR FOREVER BEGINS — IT ALL STARTS IN..." COUNTDOWN (IMG 3) -->
+  <!-- ===================================================================== -->
+  <section class="bg-[#FAF3E6] py-12 sm:py-16 px-4 text-center reveal-section border-t border-[#D4AF37]/20">
+    <div class="max-w-xl mx-auto">
+      <p class="font-cinzel text-[11px] sm:text-xs uppercase tracking-[0.32em] text-[#0F2354]/80">
+        UNTIL OUR FOREVER BEGINS
+      </p>
+      <h2 class="font-cinzel text-2xl sm:text-4xl font-semibold text-[#09132E] tracking-wider mt-2">
+        IT ALL STARTS IN...
+      </h2>
+
+      <!-- 4 Countdown Pill Boxes -->
+      <div class="grid grid-cols-4 gap-2.5 sm:gap-4 max-w-md mx-auto mt-7">
+        <div class="rounded-2xl bg-[#0A1638] border border-[#D4AF37]/60 py-3.5 px-2 shadow-lg">
+          <div id="cdDays" class="font-cinzel text-2xl sm:text-3xl font-bold text-[#F3D98B]">00</div>
+          <div class="text-[10px] uppercase tracking-widest text-[#FAF3E6]/75 mt-1">Days</div>
+        </div>
+        <div class="rounded-2xl bg-[#0A1638] border border-[#D4AF37]/60 py-3.5 px-2 shadow-lg">
+          <div id="cdHours" class="font-cinzel text-2xl sm:text-3xl font-bold text-[#F3D98B]">00</div>
+          <div class="text-[10px] uppercase tracking-widest text-[#FAF3E6]/75 mt-1">Hours</div>
+        </div>
+        <div class="rounded-2xl bg-[#0A1638] border border-[#D4AF37]/60 py-3.5 px-2 shadow-lg">
+          <div id="cdMinutes" class="font-cinzel text-2xl sm:text-3xl font-bold text-[#F3D98B]">00</div>
+          <div class="text-[10px] uppercase tracking-widest text-[#FAF3E6]/75 mt-1">Mins</div>
+        </div>
+        <div class="rounded-2xl bg-[#0A1638] border border-[#D4AF37]/60 py-3.5 px-2 shadow-lg">
+          <div id="cdSeconds" class="font-cinzel text-2xl sm:text-3xl font-bold text-[#F3D98B]">00</div>
+          <div class="text-[10px] uppercase tracking-widest text-[#FAF3E6]/75 mt-1">Secs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. "OUR EVENTS" 2-COLUMN GRID WITH 3D ICONS (MATCHING IMAGES 3 & 4)   -->
+  <!-- ===================================================================== -->
+  <section id="eventsSection" class="bg-[#09132E] py-16 sm:py-20 px-4 sm:px-6 text-white">
+    <div class="max-w-3xl mx-auto reveal-section">
+      <div class="text-center mb-11">
+        <p class="font-cinzel text-[11px] uppercase tracking-[0.35em] text-[#D4AF37] mb-1.5">
+          Royal Celebrations
+        </p>
+        <h2 class="font-cinzel text-2xl sm:text-4xl font-bold tracking-[0.14em] text-white uppercase">
+          OUR EVENTS
+        </h2>
+      </div>
+
+      <!-- 2-Column Mobile & Desktop Grid matching Images 3 & 4 -->
+      <div class="grid grid-cols-2 gap-3.5 sm:gap-6">
+
+        <!-- Event 1: Engagement (3D Solitaire Diamond Ring & Jasmine Leaves) -->
+        <div class="tilt-card-3d event-card-navy rounded-2xl p-4 sm:p-7 text-center flex flex-col items-center justify-between">
+          <div class="tilt-layer-front w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center icon-float-3d">
+            <svg viewBox="0 0 120 120" class="w-full h-full" fill="none">
+              <!-- Greenery Leaves -->
+              <path d="M25 82 C15 68 26 52 44 64 C38 78 30 84 25 82 Z" fill="#15803D"/>
+              <path d="M95 82 C105 68 94 52 76 64 C82 78 90 84 95 82 Z" fill="#166534"/>
+              <!-- 3D Golden Ring Band -->
+              <circle cx="60" cy="64" r="28" stroke="url(#goldRing3D)" stroke-width="9"/>
+              <defs>
+                <linearGradient id="goldRing3D" x1="30" y1="35" x2="90" y2="92" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FFF3B0"/>
+                  <stop offset="50%" stop-color="#D4AF37"/>
+                  <stop offset="100%" stop-color="#8C6414"/>
+                </linearGradient>
+              </defs>
+              <!-- Faceted Solitaire Diamond -->
+              <polygon points="48,26 72,26 78,34 60,48 42,34" fill="#E0F2FE" stroke="#FFFFFF" stroke-width="1.5"/>
+              <polygon points="52,26 68,26 60,48" fill="#BAE6FD"/>
+              <!-- White Jasmine Blossom -->
+              <g transform="translate(46, 84)">
+                <circle cx="0" cy="-7" r="6" fill="#FFFFFF"/>
+                <circle cx="7" cy="0" r="6" fill="#FAF3E6"/>
+                <circle cx="0" cy="7" r="6" fill="#FFFFFF"/>
+                <circle cx="-7" cy="0" r="6" fill="#FAF3E6"/>
+                <circle cx="0" cy="0" r="3.5" fill="#F59E0B"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="mt-3">
+            <h3 class="font-cormorant text-xl sm:text-2xl font-bold text-[#F3D98B]">Engagement</h3>
+            <p class="text-xs sm:text-sm font-bold text-white mt-1.5">2026-09-25 •<br class="sm:hidden" /> 10:00 AM</p>
+            <p class="font-cormorant text-xs sm:text-sm text-[#FAF3E6]/85 mt-1">The Leela Palace</p>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=The+Leela+Palace+Udaipur"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-block px-3.5 sm:px-5 py-2 rounded-lg border border-[#D4AF37]/75 text-[#F3D98B] text-[11px] sm:text-xs font-cormorant font-semibold tracking-wide hover:bg-[#D4AF37] hover:text-[#09132E] transition"
+          >
+            Open Location
+          </a>
+        </div>
+
+        <!-- Event 2: Haldi (3D Brass Urli Bowl with Turmeric & Roots) -->
+        <div class="tilt-card-3d event-card-navy rounded-2xl p-4 sm:p-7 text-center flex flex-col items-center justify-between">
+          <div class="tilt-layer-front w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center icon-float-3d" style="animation-delay: -0.8s;">
+            <svg viewBox="0 0 120 120" class="w-full h-full" fill="none">
+              <!-- Leaves -->
+              <path d="M24 62 C18 46 34 36 46 52 Z" fill="#15803D"/>
+              <path d="M96 62 C102 46 86 36 74 52 Z" fill="#166534"/>
+              <!-- Mound of Golden Turmeric Paste -->
+              <path d="M36 62 C38 42 82 42 84 62 Z" fill="#F59E0B"/>
+              <path d="M44 55 C52 47 68 47 76 55" stroke="#FDE047" stroke-width="3" stroke-linecap="round"/>
+              <!-- 3D Brass Urli Bowl -->
+              <path d="M30 60 H90 C88 86 74 96 60 96 C46 96 32 86 30 60 Z" fill="url(#brassBowl3D)" stroke="#FFF0B3" stroke-width="1.5"/>
+              <defs>
+                <linearGradient id="brassBowl3D" x1="30" y1="60" x2="90" y2="96" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FDE68A"/>
+                  <stop offset="50%" stop-color="#D4AF37"/>
+                  <stop offset="100%" stop-color="#78350F"/>
+                </linearGradient>
+              </defs>
+              <!-- Raw Turmeric Roots & Slices -->
+              <rect x="22" y="84" width="26" height="9" rx="4.5" transform="rotate(-16 22 84)" fill="#D97706"/>
+              <circle cx="52" cy="94" r="6" fill="#F59E0B" stroke="#B45309" stroke-width="1.5"/>
+              <!-- White Flower -->
+              <circle cx="88" cy="84" r="8" fill="#FFFFFF"/>
+              <circle cx="88" cy="84" r="3" fill="#F59E0B"/>
+            </svg>
+          </div>
+
+          <div class="mt-3">
+            <h3 class="font-cormorant text-xl sm:text-2xl font-bold text-[#F3D98B]">Haldi</h3>
+            <p class="text-xs sm:text-sm font-bold text-white mt-1.5">2026-09-26 •<br class="sm:hidden" /> 01:00 PM</p>
+            <p class="font-cormorant text-xs sm:text-sm text-[#FAF3E6]/85 mt-1">The Taj Palace</p>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Taj+Lake+Palace+Udaipur"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-block px-3.5 sm:px-5 py-2 rounded-lg border border-[#D4AF37]/75 text-[#F3D98B] text-[11px] sm:text-xs font-cormorant font-semibold tracking-wide hover:bg-[#D4AF37] hover:text-[#09132E] transition"
+          >
+            Open Location
+          </a>
+        </div>
+
+        <!-- Event 3: Mehndi (3D Golden Henna Bowl & Ornate Cone) -->
+        <div class="tilt-card-3d event-card-navy rounded-2xl p-4 sm:p-7 text-center flex flex-col items-center justify-between">
+          <div class="tilt-layer-front w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center icon-float-3d" style="animation-delay: -1.6s;">
+            <svg viewBox="0 0 120 120" class="w-full h-full" fill="none">
+              <!-- Henna Paste Swirl -->
+              <path d="M34 58 C38 40 74 40 78 58 Z" fill="#3F6212"/>
+              <path d="M46 46 Q56 36 64 46" stroke="#65A30D" stroke-width="3" stroke-linecap="round"/>
+              <!-- Golden Bowl -->
+              <path d="M28 58 H82 C80 82 68 92 55 92 C42 92 30 82 28 58 Z" fill="url(#brassBowl3D)" stroke="#FFF0B3" stroke-width="1.5"/>
+              <!-- Diagonal Ornate Mehndi Cone -->
+              <path d="M98 48 L64 95 L58 90 L86 40 Z" fill="#B45309" stroke="#FDE68A" stroke-width="1.5"/>
+              <!-- Jasmine Flower -->
+              <circle cx="34" cy="82" r="8" fill="#FFFFFF"/>
+              <circle cx="34" cy="82" r="3" fill="#F59E0B"/>
+            </svg>
+          </div>
+
+          <div class="mt-3">
+            <h3 class="font-cormorant text-xl sm:text-2xl font-bold text-[#F3D98B]">Mehndi</h3>
+            <p class="text-xs sm:text-sm font-bold text-white mt-1.5">2026-09-26 •<br class="sm:hidden" /> 05:00 PM</p>
+            <p class="font-cormorant text-xs sm:text-sm text-[#FAF3E6]/85 mt-1">The Leela Palace</p>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=The+Leela+Palace+Udaipur"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-block px-3.5 sm:px-5 py-2 rounded-lg border border-[#D4AF37]/75 text-[#F3D98B] text-[11px] sm:text-xs font-cormorant font-semibold tracking-wide hover:bg-[#D4AF37] hover:text-[#09132E] transition"
+          >
+            Open Location
+          </a>
+        </div>
+
+        <!-- Event 4: Sangeet (3D Royal Wooden Dholak with Pink Tassels) -->
+        <div class="tilt-card-3d event-card-navy rounded-2xl p-4 sm:p-7 text-center flex flex-col items-center justify-between">
+          <div class="tilt-layer-front w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center icon-float-3d" style="animation-delay: -2.4s;">
+            <svg viewBox="0 0 120 120" class="w-full h-full" fill="none">
+              <g transform="rotate(-26 60 60)">
+                <!-- Wooden Dholak Barrel -->
+                <rect x="28" y="38" width="64" height="44" rx="14" fill="#92400E" stroke="#F3D98B" stroke-width="2.5"/>
+                <!-- Drumheads -->
+                <ellipse cx="28" cy="60" rx="8" ry="22" fill="#FEF3C7" stroke="#D4AF37" stroke-width="2"/>
+                <ellipse cx="92" cy="60" rx="8" ry="22" fill="#FEF3C7" stroke="#D4AF37" stroke-width="2"/>
+                <!-- Rope Zigzag Lacing -->
+                <path d="M32 42 L48 78 L64 42 L80 78 L88 44" stroke="#FDE68A" stroke-width="2"/>
+                <!-- Festive Pink & Gold Tassels -->
+                <circle cx="52" cy="82" r="4" fill="#EC4899"/>
+                <circle cx="68" cy="82" r="4" fill="#EC4899"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="mt-3">
+            <h3 class="font-cormorant text-xl sm:text-2xl font-bold text-[#F3D98B]">Sangeet</h3>
+            <p class="text-xs sm:text-sm font-bold text-white mt-1.5">2026-09-26 •<br class="sm:hidden" /> 08:00 PM</p>
+            <p class="font-cormorant text-xs sm:text-sm text-[#FAF3E6]/85 mt-1">The Leela Palace</p>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=The+Leela+Palace+Udaipur"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-block px-3.5 sm:px-5 py-2 rounded-lg border border-[#D4AF37]/75 text-[#F3D98B] text-[11px] sm:text-xs font-cormorant font-semibold tracking-wide hover:bg-[#D4AF37] hover:text-[#09132E] transition"
+          >
+            Open Location
+          </a>
+        </div>
+
+        <!-- Event 5 (Full-Width Highlight Card): Shubh Vivah & Pheras -->
+        <div class="tilt-card-3d col-span-2 event-card-navy rounded-2xl p-5 sm:p-7 text-center flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-[#D4AF37]/80">
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <div class="tilt-layer-front w-20 h-20 flex items-center justify-center icon-float-3d">
+              <svg viewBox="0 0 100 100" class="w-full h-full" fill="none">
+                <!-- Sacred Havan Kund & Agni Flame -->
+                <path d="M50 18 C38 35 38 48 50 56 C62 48 62 35 50 18 Z" fill="#F97316"/>
+                <path d="M50 28 C44 38 44 46 50 52 C56 46 56 38 50 28 Z" fill="#FDE047"/>
+                <polygon points="24,58 76,58 84,70 16,70" fill="#B91C1C" stroke="#F3D98B" stroke-width="2"/>
+                <polygon points="18,70 82,70 90,82 10,82" fill="#D4AF37"/>
+              </svg>
+            </div>
+            <div class="text-center sm:text-left">
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#F3D98B] text-[10px] font-cinzel uppercase tracking-widest mb-1">
+                Main Ceremony
+              </span>
+              <h3 class="font-cormorant text-2xl sm:text-3xl font-bold text-[#F3D98B]">Shubh Vivah &amp; Pheras</h3>
+              <p id="vivahEventTime" class="text-xs sm:text-sm font-bold text-white mt-0.5">2026-09-27 • 06:30 PM • Royal Mandap, Udaipur</p>
+            </div>
+          </div>
+
+          <a
+            id="vivahMapBtn"
+            href="https://www.google.com/maps/search/?api=1&query=The+Leela+Palace+Udaipur"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#F3D98B] text-[#09132E] text-xs font-bold tracking-wide hover:brightness-105 transition shrink-0"
+          >
+            Open Location
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. "OUR MOMENTS TOGETHER" CAROUSEL GALLERY (MATCHING IMAGE 5)         -->
+  <!-- ===================================================================== -->
+  <section id="gallerySection" class="bg-[#FAF3E6] py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-2xl mx-auto text-center reveal-section">
+      <h2 class="font-cinzel text-2xl sm:text-4xl font-semibold text-[#09132E] tracking-wider uppercase leading-snug">
+        OUR MOMENTS<br />TOGETHER
+      </h2>
+      <p class="font-cormorant italic text-base sm:text-lg text-[#0F2354]/80 mt-2">
+        Swipe or tap arrows to view Dulha &amp; Dulhan portraits
+      </p>
+
+      <!-- Main Photo Carousel Card (Matching Image 5) -->
+      <div class="relative mt-8 rounded-2xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 bg-[#E5E7EB] aspect-[4/3] sm:aspect-[16/11]">
+        <img
+          id="carouselMainImage"
+          src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=85"
+          onerror="this.onerror=null;this.src='https://placehold.co/900x650/0A1638/F3D98B?text=Rahul+%26+Priya';"
+          alt="Couple Pre-Wedding Moment"
+          class="w-full h-full object-cover transition-opacity duration-500"
+        />
+
+        <!-- Left Circular Arrow Button (Matching Image 5) -->
+        <button
+          type="button"
+          onclick="prevCarouselPhoto()"
+          aria-label="Previous Photo"
+          class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1F2937]/80 hover:bg-[#09132E] text-white flex items-center justify-center shadow-lg transition"
+        >
+          &#8249;
+        </button>
+
+        <!-- Right Circular Arrow Button (Matching Image 5) -->
+        <button
+          type="button"
+          onclick="nextCarouselPhoto()"
+          aria-label="Next Photo"
+          class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1F2937]/80 hover:bg-[#09132E] text-white flex items-center justify-center shadow-lg transition"
+        >
+          &#8250;
+        </button>
+
+        <!-- Bottom Caption & Slide Counter -->
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#09132E]/80 backdrop-blur-sm text-[#F3D98B] text-xs font-cormorant tracking-wider">
+          <span id="carouselCaption">Rahul &amp; Priya — Forever Begins</span> (<span id="carouselCounter">1 / 3</span>)
+        </div>
+      </div>
+
+      <!-- Thumbnail Strip + Custom Photo Upload -->
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <button type="button" onclick="setCarouselIndex(0)" class="w-14 h-14 rounded-xl overflow-hidden border-2 border-[#D4AF37] shadow">
+          <img id="thumb0" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=300&q=70" class="w-full h-full object-cover" alt="Couple 1" />
+        </button>
+        <button type="button" onclick="setCarouselIndex(1)" class="w-14 h-14 rounded-xl overflow-hidden border-2 border-[#D4AF37]/50 shadow">
+          <img id="thumb1" src="https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?auto=format&fit=crop&w=300&q=70" class="w-full h-full object-cover" alt="Groom" />
+        </button>
+        <button type="button" onclick="setCarouselIndex(2)" class="w-14 h-14 rounded-xl overflow-hidden border-2 border-[#D4AF37]/50 shadow">
+          <img id="thumb2" src="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?auto=format&fit=crop&w=300&q=70" class="w-full h-full object-cover" alt="Bride" />
+        </button>
+
+        <label class="cursor-pointer px-4 py-2.5 rounded-full bg-[#0A1638] text-[#F3D98B] border border-[#D4AF37] text-xs font-semibold hover:bg-[#132659] transition shadow">
+          <span>📷 Replace Current Photo</span>
+          <input type="file" accept="image/*" class="hidden" onchange="handleCustomCarouselUpload(event)" />
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. WARM BLESSINGS & RSVP SECTION                                      -->
+  <!-- ===================================================================== -->
+  <section class="bg-[#09132E] py-16 px-4 sm:px-6 text-white border-t border-[#D4AF37]/40">
+    <div class="max-w-xl mx-auto text-center reveal-section">
+      <p class="font-hindi text-2xl text-[#F3D98B]">॥ दर्शनाभिलाषी ॥</p>
+      <h3 class="font-cinzel text-xl sm:text-2xl font-bold tracking-wider mt-1">
+        Aggarwal &amp; Bedi Family
+      </h3>
+      <p class="font-cormorant italic text-base sm:text-lg text-[#FAF3E6]/85 mt-2">
+        We look forward to welcoming you with warmth, royal hospitality, and lifelong memories.
+      </p>
+
+      <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+        <button
+          onclick="openRsvpModal()"
+          class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#F3D98B] to-[#D4AF37] text-[#09132E] font-cinzel font-bold text-xs sm:text-sm tracking-widest uppercase shadow-xl hover:scale-105 transition"
+        >
+          Confirm Your Presence (RSVP)
+        </button>
+      </div>
+
+      <div id="rsvpSuccessMsg" class="hidden mt-5 p-3.5 rounded-xl bg-[#D4AF37]/20 border border-[#D4AF37] text-[#F3D98B] text-sm">
+        🙏 Dhanyavaad! Your RSVP &amp; blessings have been received.
+      </div>
+
+      <p class="font-hindi text-lg text-[#D4AF37] mt-12">॥ शुभम भवतु ॥</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- RSVP MODAL                                                            -->
+  <!-- ===================================================================== -->
+  <div
+    id="rsvpModal"
+    onclick="closeRsvpModal()"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+  >
+    <div
+      onclick="event.stopPropagation()"
+      class="w-full max-w-md rounded-2xl bg-[#0A1638] border-2 border-[#D4AF37] p-6 sm:p-8 text-white relative shadow-2xl"
+    >
+      <button type="button" onclick="closeRsvpModal()" class="absolute top-4 right-4 text-[#F3D98B] text-lg font-bold">✕</button>
+      <h3 class="font-cinzel text-xl font-bold text-center text-[#F3D98B]">Confirm RSVP</h3>
+      <form onsubmit="submitRsvpForm(event)" class="space-y-4 mt-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#F3D98B] mb-1">Full Name</label>
+          <input id="guestNameInput" type="text" required placeholder="e.g., Vikram & Neha Sharma" class="w-full px-3.5 py-2.5 rounded-xl bg-[#09132E] border border-[#D4AF37]/60 text-white text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#F3D98B] mb-1">Number of Guests</label>
+          <select id="guestCountInput" class="w-full px-3.5 py-2.5 rounded-xl bg-[#09132E] border border-[#D4AF37]/60 text-white text-sm">
+            <option>1 Guest</option>
+            <option selected>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4+ Family</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F3D98B] text-[#09132E] font-cinzel font-bold uppercase text-xs tracking-widest">
+          Send RSVP
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- CUSTOMIZE INVITATION MODAL                                            -->
+  <!-- ===================================================================== -->
+  <div
+    id="customizeModal"
+    onclick="closeCustomizeModal()"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+  >
+    <div
+      onclick="event.stopPropagation()"
+      class="w-full max-w-md rounded-2xl bg-[#0A1638] border-2 border-[#D4AF37] p-6 sm:p-8 text-white relative shadow-2xl"
+    >
+      <button type="button" onclick="closeCustomizeModal()" class="absolute top-4 right-4 text-[#F3D98B] text-lg font-bold">✕</button>
+      <h3 class="font-cinzel text-xl font-bold text-center text-[#F3D98B]">Customize Invitation</h3>
+      <form onsubmit="applyCustomization(event)" class="space-y-3.5 mt-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#F3D98B] mb-1">Groom</label>
+            <input id="editGroomInput" type="text" value="Rahul" required class="w-full px-3 py-2 rounded-xl bg-[#09132E] border border-[#D4AF37]/60 text-white text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-[#F3D98B] mb-1">Bride</label>
+            <input id="editBrideInput" type="text" value="Priya" required class="w-full px-3 py-2 rounded-xl bg-[#09132E] border border-[#D4AF37]/60 text-white text-sm" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#F3D98B] mb-1">Wedding Date</label>
+          <input id="editDateInput" type="date" value="2026-09-27" required class="w-full px-3 py-2 rounded-xl bg-[#09132E] border border-[#D4AF37]/60 text-white text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-[#F3D98B] mb-1">Venue</label>
+          <input id="editVenueInput" type="text" value="The Leela Palace, Udaipur" required class="w-full px-3 py-2 rounded-xl bg-[#09132E] border border-[#D4AF37]/60 text-white text-sm" />
+        </div>
+        <button type="submit" class="w-full py-3 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F3D98B] text-[#09132E] font-cinzel font-bold uppercase text-xs tracking-widest">
+          Update Card
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: SCROLL-DRIVEN ELEPHANT, GOLD SCRATCH, CAROUSEL & FX       -->
+  <!-- ===================================================================== -->
+  <script>
+    let weddingTargetDate = new Date("2026-09-27T18:30:00").getTime();
+    let isDateRevealed = false;
+    let isMusicPlaying = false;
+    let audioCtx = null;
+    let musicTimer = null;
+
+    /* ---------------------------------------------------------------------
+       1. SCROLL-DRIVEN 3D SHREE GANESH JI PARALLAX & ASCENSION
+    --------------------------------------------------------------------- */
+    const elephantTrack = document.getElementById("elephantScrollTrack");
+    const elephantMover = document.getElementById("royalElephantMover");
+    const heroNamesHeader = document.getElementById("heroNamesHeader");
+    const scrollCueBadge = document.getElementById("scrollCueBadge");
+
+    function updateElephantScrollAnimation() {
+      if (!elephantTrack || !elephantMover) return;
+      const rect = elephantTrack.getBoundingClientRect();
+      const scrollableDistance = rect.height - window.innerHeight;
+      if (scrollableDistance <= 0) return;
+
+      const scrolled = Math.min(Math.max(-rect.top, 0), scrollableDistance);
+      const progress = scrolled / scrollableDistance;
+
+      // Smooth 3D elevation & gentle scale zoom as user scrolls down
+      const translateYPercent = -progress * 28;
+      const scaleVal = 1 + progress * 0.14;
+      const opacityVal = progress > 0.78 ? Math.max(0, 1 - (progress - 0.78) / 0.22) : 1;
+
+      elephantMover.style.transform = `translate3d(0, ${translateYPercent}%, 0) scale(${scaleVal})`;
+      elephantMover.style.opacity = opacityVal.toFixed(3);
+
+      if (heroNamesHeader) {
+        heroNamesHeader.style.transform = `translateY(${-progress * 45}px)`;
+        heroNamesHeader.style.opacity = Math.max(0, 1 - progress * 1.4).toFixed(3);
+      }
+
+      if (scrollCueBadge) {
+        scrollCueBadge.style.opacity = progress > 0.12 ? "0" : "1";
+      }
+    }
+
+    window.addEventListener("scroll", updateElephantScrollAnimation, { passive: true });
+    window.addEventListener("resize", updateElephantScrollAnimation);
+
+    /* ---------------------------------------------------------------------
+       1B. CUSTOM SHREE GANESH JI PHOTO UPLOAD & 3D TILT ENGINE
+    --------------------------------------------------------------------- */
+    function handleCustomGaneshUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          const img = document.getElementById("royalGaneshCustomImg");
+          const cardImg = document.getElementById("cardGaneshPhoto");
+          if (img) img.src = e.target.result;
+          if (cardImg) cardImg.src = e.target.result;
+          triggerFireworksAndFlowers(window.innerWidth / 2, window.innerHeight * 0.6);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function init3DTiltCards() {
+      const cards = document.querySelectorAll(".tilt-card-3d");
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateZ(6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "rotateY(0deg) rotateX(0deg) translateZ(0px)";
+        });
+        card.addEventListener("touchmove", (e) => {
+          if (!e.touches[0]) return;
+          const rect = card.getBoundingClientRect();
+          const x = (e.touches[0].clientX - rect.left) / rect.width - 0.5;
+          const y = (e.touches[0].clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+        }, { passive: true });
+        card.addEventListener("touchend", () => {
+          card.style.transform = "rotateY(0deg) rotateX(0deg)";
+        });
+      });
+    }
+
+    /* ---------------------------------------------------------------------
+       1C. THREE.JS 3D GOLDEN MANDALA RINGS & AMBIENT TEMPLE SPARKLES
+    --------------------------------------------------------------------- */
+    function initThreeJS3DScene() {
+      const container = document.getElementById("threeSceneContainer");
+      if (!container || typeof THREE === "undefined") return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 18;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      // 3D Torus Golden Sacred Ring
+      const ringGeo = new THREE.TorusGeometry(6.2, 0.04, 16, 100);
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.28 });
+      const torusRing1 = new THREE.Mesh(ringGeo, ringMat);
+      torusRing1.rotation.x = 1.1;
+      scene.add(torusRing1);
+
+      const torusRing2 = new THREE.Mesh(
+        new THREE.TorusGeometry(8.4, 0.03, 16, 100),
+        new THREE.MeshBasicMaterial({ color: 0xf3d98b, transparent: true, opacity: 0.18 })
+      );
+      torusRing2.rotation.x = 1.25;
+      scene.add(torusRing2);
+
+      // 3D Floating Gold Dust Particles
+      const starCount = 160;
+      const positions = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount * 3; i += 3) {
+        positions[i] = (Math.random() - 0.5) * 32;
+        positions[i + 1] = (Math.random() - 0.5) * 32;
+        positions[i + 2] = (Math.random() - 0.5) * 18;
+      }
+      const starsGeo = new THREE.BufferGeometry();
+      starsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      const starsMat = new THREE.PointsMaterial({
+        color: 0xf3d98b,
+        size: 0.16,
+        transparent: true,
+        opacity: 0.75
+      });
+      const starField = new THREE.Points(starsGeo, starsMat);
+      scene.add(starField);
+
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      function animate3D() {
+        requestAnimationFrame(animate3D);
+        torusRing1.rotation.z += 0.003;
+        torusRing2.rotation.z -= 0.002;
+        starField.rotation.y += 0.0012;
+        starField.rotation.x += 0.0005;
+        renderer.render(scene, camera);
+      }
+      animate3D();
+    }
+
+    /* ---------------------------------------------------------------------
+       2. METALLIC GOLD FOIL SCRATCH CARD FOR WEDDING DATE
+    --------------------------------------------------------------------- */
+    const scratchCanvas = document.getElementById("scratchCanvas");
+    const scratchWrapper = document.getElementById("scratchBoxWrapper");
+    let scratchCtx = null;
+    let isScratching = false;
+    let checkTick = 0;
+
+    function initScratchCard() {
+      if (!scratchCanvas || !scratchWrapper) return;
+      const rect = scratchWrapper.getBoundingClientRect();
+      scratchCanvas.width = rect.width || 300;
+      scratchCanvas.height = rect.height || 96;
+      scratchCanvas.classList.remove("scratch-cleared");
+      isDateRevealed = false;
+
+      const status = document.getElementById("scratchStatusText");
+      if (status) status.textContent = "Rub gold card to reveal date";
+
+      scratchCtx = scratchCanvas.getContext("2d");
+      scratchCtx.globalCompositeOperation = "source-over";
+
+      const grad = scratchCtx.createLinearGradient(0, 0, scratchCanvas.width, scratchCanvas.height);
+      grad.addColorStop(0, "#B88924");
+      grad.addColorStop(0.3, "#F7E29C");
+      grad.addColorStop(0.6, "#D4AF37");
+      grad.addColorStop(1, "#9E7419");
+
+      scratchCtx.fillStyle = grad;
+      scratchCtx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+
+      scratchCtx.strokeStyle = "rgba(9, 19, 46, 0.35)";
+      scratchCtx.lineWidth = 2;
+      scratchCtx.strokeRect(5, 5, scratchCanvas.width - 10, scratchCanvas.height - 10);
+
+      scratchCtx.fillStyle = "#09132E";
+      scratchCtx.font = "bold 13px 'Cinzel', serif";
+      scratchCtx.textAlign = "center";
+      scratchCtx.textBaseline = "middle";
+      scratchCtx.fillText("✨ SCRATCH TO REVEAL DATE ✨", scratchCanvas.width / 2, scratchCanvas.height / 2);
+    }
+
+    function getScratchPoint(e) {
+      const rect = scratchCanvas.getBoundingClientRect();
+      const cx = e.touches ? e.touches[0].clientX : e.clientX;
+      const cy = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: ((cx - rect.left) / rect.width) * scratchCanvas.width,
+        y: ((cy - rect.top) / rect.height) * scratchCanvas.height,
+        screenX: cx,
+        screenY: cy
+      };
+    }
+
+    function scratchMove(e) {
+      if (!isScratching || !scratchCtx || isDateRevealed) return;
+      const pt = getScratchPoint(e);
+      scratchCtx.globalCompositeOperation = "destination-out";
+      scratchCtx.beginPath();
+      scratchCtx.arc(pt.x, pt.y, 20, 0, Math.PI * 2);
+      scratchCtx.fill();
+
+      if (Math.random() < 0.45) {
+        particles.push(new CelebrationParticle(pt.screenX, pt.screenY, "spark", true));
+      }
+
+      checkTick++;
+      if (checkTick % 8 === 0) evaluateScratchPercent();
+    }
+
+    function evaluateScratchPercent() {
+      if (isDateRevealed || !scratchCtx) return;
+      const data = scratchCtx.getImageData(0, 0, scratchCanvas.width, scratchCanvas.height).data;
+      let cleared = 0;
+      const total = data.length / 16;
+      for (let i = 3; i < data.length; i += 16) {
+        if (data[i] < 128) cleared++;
+      }
+      if (cleared / total > 0.38) {
+        revealWeddingDate();
+      }
+    }
+
+    function revealWeddingDate() {
+      if (isDateRevealed) return;
+      isDateRevealed = true;
+      scratchCanvas.classList.add("scratch-cleared");
+
+      const box = document.getElementById("revealedDateBox");
+      if (box) {
+        box.classList.remove("date-revealed-pop");
+        void box.offsetWidth;
+        box.classList.add("date-revealed-pop");
+      }
+
+      const status = document.getElementById("scratchStatusText");
+      if (status) status.textContent = "🎉 Auspicious Date Revealed!";
+
+      const rect = scratchWrapper.getBoundingClientRect();
+      triggerFireworksAndFlowers(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
+
+    function resetScratchCard() {
+      initScratchCard();
+    }
+
+    if (scratchCanvas) {
+      scratchCanvas.addEventListener("mousedown", (e) => { isScratching = true; scratchMove(e); });
+      window.addEventListener("mousemove", scratchMove);
+      window.addEventListener("mouseup", () => { isScratching = false; });
+
+      scratchCanvas.addEventListener("touchstart", (e) => { isScratching = true; scratchMove(e); }, { passive: true });
+      scratchCanvas.addEventListener("touchmove", (e) => {
+        if (isScratching) { e.preventDefault(); scratchMove(e); }
+      }, { passive: false });
+      window.addEventListener("touchend", () => { isScratching = false; });
+    }
+
+    /* ---------------------------------------------------------------------
+       3. "OUR MOMENTS TOGETHER" CAROUSEL (MATCHING IMAGE 5)
+    --------------------------------------------------------------------- */
+    const gallerySlides = [
+      {
+        url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1000&q=85",
+        caption: "Rahul & Priya — Forever Begins"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?auto=format&fit=crop&w=1000&q=85",
+        caption: "Chiranjeevi Rahul — Royal Groom"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?auto=format&fit=crop&w=1000&q=85",
+        caption: "Saubhagyawati Priya — Royal Bride"
+      }
+    ];
+    let currentSlideIdx = 0;
+
+    function renderCarouselSlide() {
+      const img = document.getElementById("carouselMainImage");
+      const cap = document.getElementById("carouselCaption");
+      const cnt = document.getElementById("carouselCounter");
+      if (!img) return;
+      img.src = gallerySlides[currentSlideIdx].url;
+      if (cap) cap.textContent = gallerySlides[currentSlideIdx].caption;
+      if (cnt) cnt.textContent = `${currentSlideIdx + 1} / ${gallerySlides.length}`;
+    }
+
+    function nextCarouselPhoto() {
+      currentSlideIdx = (currentSlideIdx + 1) % gallerySlides.length;
+      renderCarouselSlide();
+    }
+
+    function prevCarouselPhoto() {
+      currentSlideIdx = (currentSlideIdx - 1 + gallerySlides.length) % gallerySlides.length;
+      renderCarouselSlide();
+    }
+
+    function setCarouselIndex(idx) {
+      currentSlideIdx = idx;
+      renderCarouselSlide();
+    }
+
+    function handleCustomCarouselUpload(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          gallerySlides[currentSlideIdx].url = e.target.result;
+          const thumb = document.getElementById(`thumb${currentSlideIdx}`);
+          if (thumb) thumb.src = e.target.result;
+          renderCarouselSlide();
+          triggerFireworksAndFlowers(window.innerWidth / 2, window.innerHeight / 2);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    /* ---------------------------------------------------------------------
+       4. MARIGOLD PETALS & GOLDEN FIREWORKS PARTICLE SYSTEM
+    --------------------------------------------------------------------- */
+    const celCanvas = document.getElementById("celebrationCanvas");
+    const cCtx = celCanvas ? celCanvas.getContext("2d") : null;
+    let particles = [];
+
+    function resizeCelCanvas() {
+      if (!celCanvas) return;
+      celCanvas.width = window.innerWidth;
+      celCanvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCelCanvas);
+    resizeCelCanvas();
+
+    class CelebrationParticle {
+      constructor(x, y, type = "flower", burst = false) {
+        this.x = x ?? Math.random() * celCanvas.width;
+        this.y = y ?? -15;
+        this.type = type; // 'flower' | 'spark' | 'firework'
+        this.burst = burst;
+
+        if (burst) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 8 + 2.5;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed - 2;
+          this.gravity = 0.15;
+          this.size = type === "flower" ? Math.random() * 7 + 5 : Math.random() * 4 + 2;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.015 + 0.011;
+          const palette = ["#FACC15", "#F59E0B", "#F3D98B", "#FB7185", "#FFFFFF"];
+          this.color = palette[Math.floor(Math.random() * palette.length)];
+        } else {
+          this.vx = (Math.random() - 0.5) * 0.9;
+          this.vy = Math.random() * 1.1 + 0.55;
+          this.gravity = 0;
+          this.size = type === "flower" ? 6 : 2.2;
+          this.alpha = Math.random() * 0.55 + 0.35;
+          this.decay = 0;
+          this.color = type === "flower" ? "#FACC15" : "#F3D98B";
+        }
+        this.rot = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 4;
+      }
+
+      update() {
+        if (this.burst) {
+          this.vy += this.gravity;
+          this.x += this.vx;
+          this.y += this.vy;
+          this.alpha -= this.decay;
+        } else {
+          this.x += this.vx + Math.sin(this.y * 0.02) * 0.4;
+          this.y += this.vy;
+        }
+        this.rot += this.rotSpeed;
+      }
+
+      draw(ctx) {
+        if (this.alpha <= 0) return;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, this.alpha);
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rot * Math.PI) / 180);
+
+        if (this.type === "flower") {
+          ctx.fillStyle = this.color;
+          for (let p = 0; p < 5; p++) {
+            ctx.rotate((Math.PI * 2) / 5);
+            ctx.beginPath();
+            ctx.ellipse(0, this.size * 0.6, this.size * 0.32, this.size * 0.65, 0, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.fillStyle = "#B45309";
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size * 0.25, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = this.color;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.color;
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    function triggerFireworksAndFlowers(cx, cy) {
+      const spots = [
+        { x: cx, y: cy, delay: 0 },
+        { x: cx - 110, y: cy - 50, delay: 180 },
+        { x: cx + 110, y: cy - 50, delay: 360 }
+      ];
+      spots.forEach((s) => {
+        setTimeout(() => {
+          for (let i = 0; i < 42; i++) {
+            particles.push(new CelebrationParticle(s.x, s.y, i % 3 === 0 ? "flower" : "spark", true));
+          }
+        }, s.delay);
+      });
+    }
+
+    function animateCelebrationCanvas() {
+      if (!cCtx || !celCanvas) return;
+      cCtx.clearRect(0, 0, celCanvas.width, celCanvas.height);
+
+      if (particles.length < 28 && Math.random() < 0.14) {
+        particles.push(new CelebrationParticle(Math.random() * celCanvas.width, -15, Math.random() < 0.45 ? "flower" : "spark", false));
+      }
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw(cCtx);
+        if (p.alpha <= 0 || p.y > celCanvas.height + 25) {
+          particles.splice(i, 1);
+        }
+      }
+      requestAnimationFrame(animateCelebrationCanvas);
+    }
+
+    /* ---------------------------------------------------------------------
+       5. COUNTDOWN, SHEHNAI AUDIO & MODALS
+    --------------------------------------------------------------------- */
+    function updateCountdown() {
+      const diff = Math.max(0, weddingTargetDate - Date.now());
+      document.getElementById("cdDays").textContent = String(Math.floor(diff / 86400000)).padStart(2, "0");
+      document.getElementById("cdHours").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+      document.getElementById("cdMinutes").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+      document.getElementById("cdSeconds").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+    }
+
+    function toggleRoyalMusic() {
+      if (!audioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioCtx();
+      }
+      if (audioCtx.state === "suspended") audioCtx.resume();
+
+      const icon = document.getElementById("musicIcon");
+      const label = document.getElementById("musicLabel");
+
+      if (isMusicPlaying) {
+        isMusicPlaying = false;
+        clearInterval(musicTimer);
+        if (icon) icon.textContent = "🔇";
+        if (label) label.textContent = "Shehnai";
+      } else {
+        isMusicPlaying = true;
+        if (icon) icon.textContent = "🎶";
+        if (label) label.textContent = "Playing";
+        const notes = [261.63, 293.66, 329.63, 392.0, 440.0, 523.25];
+        let step = 0;
+        musicTimer = setInterval(() => {
+          if (!isMusicPlaying) return;
+          const now = audioCtx.currentTime;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(notes[step % notes.length], now);
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.linearRampToValueAtTime(0.05, now + 0.15);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 1.25);
+          step++;
+        }, 900);
+      }
+    }
+
+    function openRsvpModal() {
+      const m = document.getElementById("rsvpModal");
+      if (m) { m.classList.remove("hidden"); m.classList.add("flex"); }
+    }
+    function closeRsvpModal() {
+      const m = document.getElementById("rsvpModal");
+      if (m) { m.classList.add("hidden"); m.classList.remove("flex"); }
+    }
+    function submitRsvpForm(e) {
+      e.preventDefault();
+      const name = document.getElementById("guestNameInput")?.value.trim() || "Guest";
+      const count = document.getElementById("guestCountInput")?.value || "2 Guests";
+      closeRsvpModal();
+      const msg = document.getElementById("rsvpSuccessMsg");
+      if (msg) {
+        msg.textContent = `🙏 Dhanyavaad, ${name} (${count})! Your RSVP & blessings have been received.`;
+        msg.classList.remove("hidden");
+      }
+      triggerFireworksAndFlowers(window.innerWidth / 2, window.innerHeight / 2);
+    }
+
+    function openCustomizeModal() {
+      const m = document.getElementById("customizeModal");
+      if (m) { m.classList.remove("hidden"); m.classList.add("flex"); }
+    }
+    function closeCustomizeModal() {
+      const m = document.getElementById("customizeModal");
+      if (m) { m.classList.add("hidden"); m.classList.remove("flex"); }
+    }
+    function applyCustomization(e) {
+      e.preventDefault();
+      const groom = document.getElementById("editGroomInput")?.value.trim() || "Rahul";
+      const bride = document.getElementById("editBrideInput")?.value.trim() || "Priya";
+      const dateStr = document.getElementById("editDateInput")?.value || "2026-09-27";
+      const venue = document.getElementById("editVenueInput")?.value.trim() || "The Leela Palace, Udaipur";
+
+      document.getElementById("heroGroomName").textContent = groom;
+      document.getElementById("heroBrideName").textContent = bride;
+      document.getElementById("cardGroomName").textContent = groom.toUpperCase();
+      document.getElementById("cardBrideName").textContent = bride.toUpperCase();
+      gallerySlides[0].caption = `${groom} & ${bride} — Forever Begins`;
+      renderCarouselSlide();
+
+      const dt = new Date(`${dateStr}T18:30:00`);
+      if (!isNaN(dt.getTime())) {
+        weddingTargetDate = dt.getTime();
+        const fmt = dt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+        document.getElementById("cardWeddingDate").textContent = fmt;
+        document.getElementById("vivahEventTime").textContent = `${dateStr} • 06:30 PM • ${venue}`;
+      }
+      document.getElementById("cardWeddingVenue").textContent = venue;
+
+      closeCustomizeModal();
+      resetScratchCard();
+      updateCountdown();
+    }
+
+    // Scroll Reveal Observer
+    const sectionObserver = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".reveal-section").forEach((el) => sectionObserver.observe(el));
+
+    window.addEventListener("load", () => {
+      updateElephantScrollAnimation();
+      init3DTiltCards();
+      initThreeJS3DScene();
+      initScratchCard();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      animateCelebrationCanvas();
+    });
+  </script>
+</body>
+</html>
